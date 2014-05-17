@@ -21,6 +21,7 @@ namespace BusinessLayer {
 
         // default constructor
         public Point() {
+            // do nothing
         }
 
         internal Point(IDictionary<string, object> plain) {
