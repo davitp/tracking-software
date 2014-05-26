@@ -18,11 +18,22 @@ namespace BusinessLayer {
         [DictionaryMember]
         public Boolean NeedToChangeOil { get; protected set; }
 
+        /// <summary>
+        /// coordiantes
+        /// </summary>
         [DictionaryMember]
         public double Latitude { get; protected set; }
 
         [DictionaryMember]
         public double Longitude { get; protected set; }
+
+        // car speed (km/h)
+        [DictionaryMember]
+        public int Speed { get; protected set; }
+
+        
+
+
 
         // initialize from Dictionary
         internal State(IDictionary<string, object> statePlain) {
