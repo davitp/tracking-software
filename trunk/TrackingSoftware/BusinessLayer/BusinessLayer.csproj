@@ -44,6 +44,7 @@
     <Compile Include="Entities\CarDevice.cs" />
     <Compile Include="Attributes\DictionaryMember.cs" />
     <Compile Include="Entities\DALAble.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Repositories\CarDeviceRepository.cs" />
     <Compile Include="Repositories\CarRepository.cs" />
     <Compile Include="Repositories\DriverRepository.cs" />
