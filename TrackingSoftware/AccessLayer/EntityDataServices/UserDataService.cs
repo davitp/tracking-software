@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace DataAccessLayer {
-    public class CarDataService : IEntityDataService {
+    public class UserDataService : IEntityDataService {
         #region IEntityDataService implemetation
         // get set of objects as returned value 
         // of "operation" with arguments "args"
