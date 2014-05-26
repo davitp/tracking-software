@@ -10,7 +10,7 @@ namespace BusinessLayer {
 
         // name of role
         [DictionaryMember]
-        public int RoleName { get; protected set; }
+        public string RoleName { get; protected set; }
 
         #endregion
 
