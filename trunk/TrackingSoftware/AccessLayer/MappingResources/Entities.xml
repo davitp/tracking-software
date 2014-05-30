@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Entities MappingType="BL2DAL">
+  <!-- Car entity description -->
+  <Entity BusinessName="Car" PlainName="car">
+    <Property BusinessName="Id" PlainName="id" />
+    <Property BusinessName="DriverId" PlainName="driverId" />
+    <Property BusinessName="CarDeviceId" PlainName="carDeviceId" />
+    <Property BusinessName="Color" PlainName="color" />
+    <Property BusinessName="Manufacturer" PlainName="manufacturer" />
+    <Property BusinessName="Model" PlainName="model" />
+  </Entity> 
+
+</Entities>

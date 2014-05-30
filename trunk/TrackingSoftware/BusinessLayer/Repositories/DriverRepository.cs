@@ -13,11 +13,13 @@ namespace BusinessLayer {
 
             // boxing parameters
             // operation name: Filter
-            // parameter 0: filtering criteria - name
-            object[] parameters = new object[1];
-            parameters[0] = (object) "name";
+            // parameter 0: entity name
+            // parameter 1: filtering criteria - name
+            object[] parameters = new object[2];
+            parameters[0] = (object) entityMappedName;
+            parameters[1] = (object) "name";
 
-
+            DriverDataService dataService = new DriverDataService();
             var retrive = dataService.ExecuteSet("Filter", parameters);
 
             foreach(var r in retrive)
