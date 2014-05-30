@@ -12,7 +12,11 @@ namespace TrackingSoftware
         static void Main(string[] args)
         {
             Console.WriteLine("Build success!");
-            
+            Console.WriteLine("Using Repo ... ");
+            CarRepository repo = new CarRepository();
+
+
+            Console.WriteLine("End!");
             Console.ReadKey();
         }
     }

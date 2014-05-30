@@ -8,31 +8,36 @@ namespace BusinessLayer {
     // example:
     //    T = Car
     //    K = CarDataService
-    abstract public class GenericRepository <T, K> 
-        where K: IEntityDataService, new() 
+    public class GenericRepository <T, K>  : IDisposable
+        where K: EntityDataService, new() 
         where T: DALAble, new() {
 
-        // an instanse of CarDataService
-        // that allows to operate with DAL 
-        protected K dataService;
+        // dal-based name of entity 
+        protected string entityMappedName;
 
-        // default constructor, that
-        // initializes dataService object
+        // initialize entityMappedName
         public GenericRepository() {
-            dataService = new K();
+            string entityName = typeof(T).Name;
+            // get mapped name
+            entityMappedName = DataService.Mapper.MapEntity(entityName);
         }
+
 
         #region Generic Repository Methods
         IList<T> GetAll() {
             // retrive result from DAL as list of 
             // key-value pair dictionaries
-
-            // calling "All" operation 
+            K dataService = new K();                               
+            // calling "GetAll" operation 
             // which will return all T entities
             // represented as List of dictionaries
-            // no need to pass additional arguments
+            
+            object[] parameters = { (object) entityMappedName };
+
             IList<IDictionary<string, object>> retriveData 
-                = dataService.ExecuteSet("All", null);
+                = dataService.ExecuteSet("GetAll", parameters);
+
+
 
             // fill a new list from retrived data
             IList<T> result = new List<T>();
@@ -46,13 +51,15 @@ namespace BusinessLayer {
         }
 
         T GetById(int id) {
+            // dataservice
+            K dataService = new K();                               
+
             IDictionary<string, object> retrive;
         
             // preparing argumenst for ExecuteScalar
-            // method of CarDataService
-            object[] args = new object[1];
-            // passing car id as first paramenter
-            args[0] = (object) id;
+            
+            object[] args = { (object) entityMappedName, (object) id };
+
 
             // call "GetById" operation with specified
             // arguments
@@ -65,17 +72,28 @@ namespace BusinessLayer {
 
 
         bool Save(T entity) {
-
+            K dataService = new K();
+            object[] parameters = { (object) entityMappedName };       
             IDictionary<string, object> toSave = entity.ToDictionary();
-            // saving without arguments
-            return dataService.Insert(toSave, null);
+
+            // passing as argument only entity name
+            return dataService.Insert(toSave, parameters);
         }
 
 
 
         bool DeleteById(int id) {
-            // delete car object from db without parameters
-            return dataService.DeleteById(id, null);
+            K dataService = new K();
+            object[] parameters = { (object) entityMappedName };                
+            // delete car object from db 
+            // with only parameter - entity name
+            return dataService.DeleteById(id, parameters);
+        }
+        #endregion
+
+        #region Implementation of Dispose
+        void IDisposable.Dispose() {
+
         }
         #endregion
 
