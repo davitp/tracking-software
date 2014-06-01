@@ -14,10 +14,6 @@ namespace BusinessLayer{
         [DictionaryMember]
         public int Id { get; protected set; }
 
-        // driver identifier
-        [DictionaryMember]
-        public int DriverId { get; protected set; }
-
         // car device identifier
         [DictionaryMember]
         public int CarDeviceId { get; protected set; }

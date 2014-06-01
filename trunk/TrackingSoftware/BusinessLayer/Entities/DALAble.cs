@@ -15,6 +15,8 @@ namespace BusinessLayer {
             // business entity name
             string bEntity = this.GetType().Name;
 
+            Mapper entityMapper = new Mapper(bEntity);
+
             // trying to build list of members
             // that have attribute [DictionaryMember]
             // it means that we have add member into dictionary
@@ -28,7 +30,7 @@ namespace BusinessLayer {
                 // if property is [DictionaryMember]
                 if(Attribute.IsDefined(prop, typeof(DictionaryMemberAttribute))) {
                     // get DAL name of property
-                    var propName = DataService.Mapper.MapParameter(bEntity, prop.Name);
+                    var propName = entityMapper.MapParameter(prop.Name);
                     // fill dictionary from fields having [DictionaryMember]
                     // attribute
 
@@ -49,6 +51,9 @@ namespace BusinessLayer {
             // business entity name
             string bEntity = this.GetType().Name;
 
+            // initialize mapper
+            Mapper entityMapper = new Mapper(bEntity);
+
             // trying to build list of members
             // that have attribute [DictionaryMember]
             // it means that we have add member into dictionary
@@ -62,7 +67,7 @@ namespace BusinessLayer {
                 // if property is [DictionaryMember]
                 if(Attribute.IsDefined(prop, typeof(DictionaryMemberAttribute))) {
                     // get DAL name of property
-                    var propName = DataService.Mapper.MapParameter(bEntity, prop.Name);
+                    var propName = entityMapper.MapParameter(prop.Name);
                     // set value of this.{prop.Name} member = plainObj[propName]
                     // and converting value as needed
                     // Converting plainObj[propName] object to prop.GetType() type

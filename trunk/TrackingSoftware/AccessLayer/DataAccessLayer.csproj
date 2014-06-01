@@ -40,18 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityDataServices\CarDeviceDataService.cs" />
-    <Compile Include="EntityDataServices\DriverDataService.cs" />
-    <Compile Include="EntityDataServices\CarDataService.cs" />
-    <Compile Include="DataService.cs" />
-    <Compile Include="EntityDataServices\EntityDataService.cs" />
+    <Compile Include="Mapping.cs" />
+    <Compile Include="DataServices\EntityDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EntityDataServices\UserDataService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="MappingResources\Entities.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <Content Include="SQL_Tables\carDevice_table.sql" />
     <Content Include="SQL_Tables\carstate_table.sql" />
@@ -60,6 +57,9 @@
     <Content Include="SQL_Tables\parks_table.sql" />
     <Content Include="SQL_Tables\userRoles_table.sql" />
     <Content Include="SQL_Tables\users_table.sql" />
+    <None Include="MappingResources\EntitiesSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

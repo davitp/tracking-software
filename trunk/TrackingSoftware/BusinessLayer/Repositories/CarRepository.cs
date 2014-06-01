@@ -3,26 +3,17 @@ using System.Collections.Generic;
 using DataAccessLayer;
                    
 namespace BusinessLayer {
-    public class CarRepository : GenericRepository<Car, CarDataService> {
-
-        public string getDalName() {
-            return DataService.Mapper.MapEntity("barev");
-        }
+    public class CarRepository : GenericRepository<Car> {
 
         #region Car-specific methods
         // get state of car with carId and atTime parameters
         State GetState(int carId, DateTime atTime) {
             // boxing parameters
-            // parameter 0: entity name
-            // parameter 1: carId
-            // parameter 2: atTime
-            object[] param = new object[3];
-            param[0] = (object) entityMappedName;
-            param[1] = (object) carId;
-            param[2] = (object) atTime;
+            // parameter 0: carId
+            // parameter 1: atTime
+            object[] param = {(object) carId, (object) atTime };
 
             // retrive Scalar data
-            CarDataService dataService = new CarDataService();
             IDictionary<string, object> retrive 
                 = dataService.ExecuteScalar("GetState", param);
 
@@ -34,17 +25,16 @@ namespace BusinessLayer {
             IList<State> history = new List<State>();
 
             // boxing parameters
-            // parameter 0: entity name
-            // parameter 1: carId
-            // parameter 2: start time
-            // parameter 3: end time
-            object[] parameters = new object[4];
-            parameters[0] = (object) entityMappedName;
-            parameters[1] = (object) carId;
-            parameters[2] = (object) startTime;
-            parameters[3] = (object) endTime;
+            // parameter 0: carId
+            // parameter 1: start time
+            // parameter 2: end time
+            object[] parameters = {
+                (object) entityMappedName,
+                (object) carId,
+                (object) startTime,
+                (object) endTime
+            };
 
-            CarDataService dataService = new CarDataService();                         
             IList<IDictionary<string, object>> retrive 
                 = dataService.ExecuteSet("GetStateHisory", parameters);
 
