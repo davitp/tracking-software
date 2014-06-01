@@ -55,6 +55,7 @@
     <Content Include="SQL_Tables\cars_table.sql" />
     <Content Include="SQL_Tables\drivers_table.sql" />
     <Content Include="SQL_Tables\parks_table.sql" />
+    <Content Include="SQL_Tables\car_driver_table.sql" />
     <Content Include="SQL_Tables\userRoles_table.sql" />
     <Content Include="SQL_Tables\users_table.sql" />
     <None Include="MappingResources\EntitiesSchema.xsd">
