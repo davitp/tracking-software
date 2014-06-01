@@ -4,7 +4,7 @@ using DataAccessLayer;
 
 namespace BusinessLayer {
     // repository of Driver objects
-    public class DriverRepository : GenericRepository<Driver, DriverDataService> {
+    public class DriverRepository : GenericRepository<Driver> {
     
         #region Driver-specific methods
         // method for filtering Drivers by name criteria
@@ -13,13 +13,9 @@ namespace BusinessLayer {
 
             // boxing parameters
             // operation name: Filter
-            // parameter 0: entity name
-            // parameter 1: filtering criteria - name
-            object[] parameters = new object[2];
-            parameters[0] = (object) entityMappedName;
-            parameters[1] = (object) "name";
+            // parameter 0: filtering criteria - name
+            object[] parameters = { (object) "name" };
 
-            DriverDataService dataService = new DriverDataService();
             var retrive = dataService.ExecuteSet("Filter", parameters);
 
             foreach(var r in retrive)

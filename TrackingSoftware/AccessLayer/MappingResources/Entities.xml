@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<Entities MappingType="BL2DAL">
-  <!-- Car entity description -->
+<Entities MappingType="BL2DAL" xmlns="http://www.w3schools.com"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.w3schools.com EntitiesSchema.xsd">
+
   <Entity BusinessName="Car" PlainName="car">
     <Property BusinessName="Id" PlainName="id" />
     <Property BusinessName="DriverId" PlainName="driverId" />

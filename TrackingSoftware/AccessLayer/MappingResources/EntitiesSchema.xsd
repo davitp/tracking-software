@@ -1,0 +1,40 @@
+﻿<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.w3schools.com"
+xmlns="http://www.w3schools.com"
+elementFormDefault="qualified">
+  
+  <xs:element name="Entities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Entity">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Property" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="BusinessName" use="required"/>
+                      <xs:attribute type="xs:string" name="PlainName" use="required"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+                <xs:unique name="UniquePropertyKey">
+                  <xs:selector xpath="Property" />
+                  <xs:field xpath="@BusinessName" />
+                </xs:unique>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="BusinessName" use="required"/>
+            <xs:attribute type="xs:string" name="PlainName" use="required"/>
+          </xs:complexType>
+          <xs:unique name="UniqueEntityKey">
+            <xs:selector xpath="Entity" />
+            <xs:field xpath="@BusinessName" />
+          </xs:unique>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="MappingType"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
