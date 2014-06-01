@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionManager.cs" />
+    <Compile Include="DbOperation.cs" />
     <Compile Include="Mapping.cs" />
     <Compile Include="DataServices\EntityDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -47,9 +49,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="MappingResources\Entities.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
+    <Content Include="MappingResources\SQLUnitMapping\UnitMapper.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MappingResources\SQLUnitMapping\car_operations.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SQL_Tables\carDevice_table.sql" />
     <Content Include="SQL_Tables\carstate_table.sql" />
     <Content Include="SQL_Tables\cars_table.sql" />
@@ -59,6 +69,9 @@
     <Content Include="SQL_Tables\userRoles_table.sql" />
     <Content Include="SQL_Tables\users_table.sql" />
     <None Include="MappingResources\EntitiesSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MappingResources\SQLUnitMapping\OperationsMapperSchema.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DataAccessLayer;
+using System.Data.SqlClient;
 
 namespace BusinessLayer {
     // T: Type of entity
@@ -67,8 +68,8 @@ namespace BusinessLayer {
             IDictionary<string, object> retrive;
         
             // preparing argumenst for ExecuteScalar
-            
-            object[] args = { (object) id };
+            IDictionary<string, object> args = new Dictionary<string, object>();
+            args.Add("id", id);
 
 
             // call "GetById" operation with specified
@@ -82,7 +83,7 @@ namespace BusinessLayer {
 
         // create default entity and return
         public T Create() {
-            IDictionary<string, object> retrive = dataService.Create(null);
+            IDictionary<string, object> retrive = dataService.ExecuteScalar("Create", null);
             T newObj = new T();
             newObj.InitializeEntity(retrive);
             return newObj;
@@ -90,18 +91,22 @@ namespace BusinessLayer {
 
 
         public bool Update(T entity) {
-       
             IDictionary<string, object> toSave = entity.ToDictionary();
 
             // no args
-            return dataService.Update(toSave, null);
+            int retrive = dataService.ExecuteNonQuery("Update", toSave);
+            return (retrive > 0);
         }
 
 
 
         public bool DeleteById(int id) {             
             // delete car object from db 
-            return dataService.DeleteById(id, null);
+            // preparing argumenst for ExecuteScalar
+            IDictionary<string, object> args = new Dictionary<string, object>();
+            args.Add("id", id);
+            int retrive = dataService.ExecuteNonQuery("DeleteById", args);
+            return (retrive > 0);
         }
         #endregion
 

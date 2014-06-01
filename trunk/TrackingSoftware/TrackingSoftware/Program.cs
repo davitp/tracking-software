@@ -15,7 +15,7 @@ namespace TrackingSoftware
             Console.WriteLine("Using Repo ... ");
 
             CarRepository repo = new CarRepository();
-
+            repo.GetAll();
 
             Console.WriteLine("End!");
             Console.ReadKey();
