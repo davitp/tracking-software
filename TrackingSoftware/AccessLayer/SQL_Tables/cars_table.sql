@@ -1,7 +1,7 @@
 USE [TrackingSoftwareDB]
 GO
 
-/****** Object:  Table [dbo].[cars_table]    Script Date: 05/26/2014 21:11:12 ******/
+/****** Object:  Table [dbo].[cars_table]    Script Date: 06/01/2014 15:58:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,7 +13,6 @@ GO
 
 CREATE TABLE [dbo].[cars_table](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[driverId] [int] NOT NULL,
 	[carDeviceId] [int] NOT NULL,
 	[color] [varchar](10) NOT NULL,
 	[manufacturer] [varchar](40) NOT NULL,
@@ -29,10 +28,4 @@ GO
 SET ANSI_PADDING OFF
 GO
 
-ALTER TABLE [dbo].[cars_table]  WITH CHECK ADD  CONSTRAINT [driver_id_references_to_drivers_table] FOREIGN KEY([driverId])
-REFERENCES [dbo].[drivers_table] ([id])
-GO
-
-ALTER TABLE [dbo].[cars_table] CHECK CONSTRAINT [driver_id_references_to_drivers_table]
-GO
 
