@@ -10,10 +10,12 @@ namespace BusinessLayer {
 
             // boxing parameters
             // operation name: GetBy
-            // parameter 0: getting by "SimNumber"
-            object[] parameters = { (object) "SimNumber" };
+            // parameter getBy: getting by "SimNumber"
+            // preparing argumenst for ExecuteScalar
+            IDictionary<string, object> args = new Dictionary<string, object>();
+            args.Add("filterBySim", "SimNumber");
 
-            var retrive = dataService.ExecuteScalar("GetBy", parameters);
+            var retrive = dataService.ExecuteScalar("GetBy", args);
 
             return new CarDevice(retrive);
         }

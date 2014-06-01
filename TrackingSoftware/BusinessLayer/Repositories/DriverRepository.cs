@@ -14,9 +14,12 @@ namespace BusinessLayer {
             // boxing parameters
             // operation name: Filter
             // parameter 0: filtering criteria - name
-            object[] parameters = { (object) "name" };
+            IDictionary<string, object> args = new Dictionary<string, object>();
+            args.Add("getByName", name);
 
-            var retrive = dataService.ExecuteSet("Filter", parameters);
+
+
+            var retrive = dataService.ExecuteSet("Filter", args);
 
             foreach(var r in retrive)
                 result.Add(new Driver(r));

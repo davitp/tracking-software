@@ -11,11 +11,14 @@ namespace BusinessLayer {
             // boxing parameters
             // parameter 0: carId
             // parameter 1: atTime
-            object[] param = {(object) carId, (object) atTime };
+
+            IDictionary<string, object> args = new Dictionary<string, object>();
+            args.Add("carId", carId);
+            args.Add("atTime", atTime);
 
             // retrive Scalar data
             IDictionary<string, object> retrive 
-                = dataService.ExecuteScalar("GetState", param);
+                = dataService.ExecuteScalar("GetState", args);
 
             return new State(retrive);
         }
@@ -28,15 +31,14 @@ namespace BusinessLayer {
             // parameter 0: carId
             // parameter 1: start time
             // parameter 2: end time
-            object[] parameters = {
-                (object) entityMappedName,
-                (object) carId,
-                (object) startTime,
-                (object) endTime
-            };
+
+            IDictionary<string, object> args = new Dictionary<string, object>();
+            args.Add("carId", carId);
+            args.Add("startTime", startTime);
+            args.Add("endTime", endTime);
 
             IList<IDictionary<string, object>> retrive 
-                = dataService.ExecuteSet("GetStateHisory", parameters);
+                = dataService.ExecuteSet("GetStateHisory", args);
 
             // fill history list based on DAL answer
             foreach(var dalObj in retrive)

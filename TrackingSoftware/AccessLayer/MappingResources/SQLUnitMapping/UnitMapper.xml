@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <Add Unit="car" File="car_operations.xml" />
+  <Add Unit="driver" File="driver_operations.xml" />
+  <Add Unit="carDevice" File="carDevice_operations.xml" />
+</Root>
