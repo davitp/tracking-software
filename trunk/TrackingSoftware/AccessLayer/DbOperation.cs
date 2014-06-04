@@ -73,10 +73,15 @@ namespace DataAccessLayer {
                 // parse ParamSize attribute
                 // this attribute is optional
                 // so size can be null
-                int size =  Convert.ToInt32(arg.Attributes["ParamSize"].Value); ;
-                
+                int? size = null;
+                if(arg.Attributes["ParamSize"] != null)
+                    size =  Convert.ToInt32(arg.Attributes["ParamSize"].Value); ;
+
+                if(size == null)
+                    size = 0;
+
                 // add to parameters list
-                var newParameter = new Tuple<string, object, SqlDbType, int>(pName, pValue, type, size);
+                var newParameter = new Tuple<string, object, SqlDbType, int>(pName, pValue, type, (int) size);
                 parameters.Add(newParameter);
 
             }

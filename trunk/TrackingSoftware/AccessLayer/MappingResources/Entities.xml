@@ -6,8 +6,6 @@ xsi:schemaLocation="http://www.w3schools.com EntitiesSchema.xsd">
 
   <Entity BusinessName="Car" PlainName="car">
     <Property BusinessName="Id" PlainName="id" />
-    <Property BusinessName="DriverId" PlainName="driverId" />
-    <Property BusinessName="CarDeviceId" PlainName="carDeviceId" />
     <Property BusinessName="Color" PlainName="color" />
     <Property BusinessName="Manufacturer" PlainName="manufacturer" />
     <Property BusinessName="Model" PlainName="model" />

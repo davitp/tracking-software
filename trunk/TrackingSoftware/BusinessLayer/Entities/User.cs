@@ -18,6 +18,10 @@ namespace BusinessLayer {
         [DictionaryMember]
         public string Password { get; protected set; }
 
+        // full name
+        [DictionaryMember]
+        public string FullName { get; protected set; }
+
         // Role of user 
         [DictionaryMember]
         public int RoleId { get; protected set; }

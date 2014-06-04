@@ -12,6 +12,10 @@ namespace BusinessLayer {
         [DictionaryMember]
         public int ParkId { get; private set; }
 
+        // park name
+        [DictionaryMember]
+        public string Name { get; private set; }
+
         [DictionaryMember]
         public string GeoDataString {
             get {
