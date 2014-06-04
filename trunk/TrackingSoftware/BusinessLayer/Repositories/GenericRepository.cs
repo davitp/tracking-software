@@ -9,7 +9,7 @@ namespace BusinessLayer {
     // example:
     //    T = Car
     //    K = CarDataService
-    public class GenericRepository <T>  : IDisposable
+    public class GenericRepository <T> 
         where T: DALAble, new() {
 
         // dal-based name of entity 
@@ -74,7 +74,7 @@ namespace BusinessLayer {
 
             // call "GetById" operation with specified
             // arguments
-            retrive = dataService.ExecuteScalar("GetById", args);
+            retrive = dataService.ExecuteSingle("GetById", args);
 
             var newObj = new T();
             newObj.InitializeEntity(retrive);
@@ -83,7 +83,7 @@ namespace BusinessLayer {
 
         // create default entity and return
         public T Create() {
-            IDictionary<string, object> retrive = dataService.ExecuteScalar("Create", null);
+            IDictionary<string, object> retrive = dataService.ExecuteSingle("Create", null);
             T newObj = new T();
             newObj.InitializeEntity(retrive);
             return newObj;
@@ -110,11 +110,7 @@ namespace BusinessLayer {
         }
         #endregion
 
-        #region Implementation of Dispose
-        void IDisposable.Dispose() {
 
-        }
-        #endregion
 
     }
 }

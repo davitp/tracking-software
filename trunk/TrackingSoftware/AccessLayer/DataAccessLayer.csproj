@@ -58,7 +58,7 @@
     </Content>
     <Content Include="MappingResources\SQLUnitMapping\car_operations.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SQL_Tables\carDevice_table.sql" />
     <Content Include="SQL_Tables\carstate_table.sql" />
@@ -70,9 +70,11 @@
     <Content Include="SQL_Tables\users_table.sql" />
     <None Include="MappingResources\EntitiesSchema.xsd">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MappingResources\SQLUnitMapping\OperationsMapperSchema.xsd">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
