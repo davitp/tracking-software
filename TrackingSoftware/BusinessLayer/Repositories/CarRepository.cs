@@ -18,7 +18,7 @@ namespace BusinessLayer {
 
             // retrive Scalar data
             IDictionary<string, object> retrive 
-                = dataService.ExecuteScalar("GetState", args);
+                = dataService.ExecuteSingle("GetState", args);
 
             return new State(retrive);
         }

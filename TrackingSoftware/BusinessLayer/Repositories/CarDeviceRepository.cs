@@ -15,7 +15,7 @@ namespace BusinessLayer {
             IDictionary<string, object> args = new Dictionary<string, object>();
             args.Add("filterBySim", "SimNumber");
 
-            var retrive = dataService.ExecuteScalar("GetBy", args);
+            var retrive = dataService.ExecuteSingle("GetBy", args);
 
             return new CarDevice(retrive);
         }

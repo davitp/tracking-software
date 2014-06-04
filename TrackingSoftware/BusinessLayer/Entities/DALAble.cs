@@ -72,8 +72,7 @@ namespace BusinessLayer {
                     // and converting value as needed
                     // Converting plainObj[propName] object to prop.GetType() type
                     // and set parameter value :)
-                    prop.SetValue((object) this,
-                        Convert.ChangeType(plainObj[propName], prop.GetType()));
+                    prop.SetValue((object) this, plainObj[propName]);
                 }
             }
         }

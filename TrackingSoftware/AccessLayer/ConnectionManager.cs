@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,6 +13,7 @@ namespace DataAccessLayer {
             return new SqlConnection(ConnectionString);
         }
 
+        // command
         public static IDbCommand CreateCommand() {
             return new SqlCommand();
         }
