@@ -5,7 +5,7 @@ elementFormDefault="qualified">
   <xs:element name="Unit">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="Operation">
+        <xs:element name="Operation" maxOccurs="unbounded">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CommandType" minOccurs="1" maxOccurs="1">
@@ -72,7 +72,9 @@ elementFormDefault="qualified">
                         </xs:attribute>
                    
                         <xs:attribute name="ParamSize" />
-                        
+                        <xs:attribute name="Name" use="required"/>
+
+
                       </xs:complexType>
                       
                     </xs:element>

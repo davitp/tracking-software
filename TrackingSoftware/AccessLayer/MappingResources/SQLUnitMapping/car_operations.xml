@@ -3,12 +3,44 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.w3schools.com OperationsMapperSchema.xsd">
   
+  <!-- GetAll operation have no parameters -->
   <Operation Name="GetAll">
     <CommandType>Text</CommandType>
-    <CommandText>select * from cars_table</CommandText>
+    <CommandText>
+      select id, color, manufacturer, model
+      from cars_table
+    </CommandText>
     <ReturnType>Set</ReturnType>
-
-    
   </Operation>
+  
+    <!--Creation Operation -->
+  <Operation Name="Create">
+    <CommandType>Text</CommandType>
+    <CommandText>
+      insert into cars_table default values;
+      select id, color, manufacturer, model
+      from cars_table
+      where 
+      id = (select ident_current('cars_table'))
+    </CommandText>
+    <ReturnType>Set</ReturnType>
+  </Operation>
+  
+  <!-- Get By Id operation -->
+  <Operation Name="GetById">
+    <CommandType>Text</CommandType>
+    <CommandText>
+      select id, color, manufacturer, model
+      from cars_table
+      where 
+      id = @idParam;
+    </CommandText>
+    <ReturnType>Set</ReturnType>
+    <Parameters>
+      <Add DbType="Int" Name="idParam" />
+    </Parameters>
+  </Operation>
+  
+ 
   
 </Unit>

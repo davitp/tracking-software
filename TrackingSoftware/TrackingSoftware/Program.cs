@@ -15,12 +15,12 @@ namespace TrackingSoftware
             Console.WriteLine("Using Repo ... ");
 
             CarRepository repo = new CarRepository();
-            var cars = repo.GetAll();
-            foreach(var car in cars) {
-                Console.WriteLine("Id: {0}, DeviceId: {1}, Color: {2}, Manufacturer: {3}, Model: {4}", 
-                    car.Id, car.CarDeviceId, car.Color, car.Manufacturer, car.Model);
+            var car = repo.GetById(1);
+            
+            Console.WriteLine("Id: {0},  Color: {1}, Manufacturer: {2}, Model: {3}", 
+                car.Id, car.Color, car.Manufacturer, car.Model);
 
-            }
+            
 
 
             Console.WriteLine("End!");

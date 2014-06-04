@@ -69,7 +69,7 @@ namespace BusinessLayer {
         
             // preparing argumenst for ExecuteScalar
             IDictionary<string, object> args = new Dictionary<string, object>();
-            args.Add("id", id);
+            args.Add("idParam", id);
 
 
             // call "GetById" operation with specified
