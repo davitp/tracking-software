@@ -11,6 +11,10 @@ namespace TrackingSoftware
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Float size: {0}", sizeof(float).ToString());
+            Console.WriteLine("Double size: {0}", sizeof(double));
+            //Console.WriteLine("DatTime size: {0}", sizeof(DateTime));
+
             Console.WriteLine("Build success!");
             Console.WriteLine("Using Repo ... ");
 
