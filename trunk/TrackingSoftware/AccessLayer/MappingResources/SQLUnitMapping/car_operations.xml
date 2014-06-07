@@ -40,7 +40,16 @@
       <Add DbType="Int" Name="idParam" />
     </Parameters>
   </Operation>
+
   
+  <!-- Get car ID's for car emulating... DEBUGING -->
+  <Operation Name="GetIDs">
+    <CommandType>Text</CommandType>
+    <CommandText>
+      select id from cars_table;
+    </CommandText>
+    <ReturnType>Set</ReturnType>
+  </Operation>
  
   
 </Unit>

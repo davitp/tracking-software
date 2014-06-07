@@ -60,6 +60,8 @@ namespace DataAccessLayer {
 
             // if command has parameters
             foreach(XmlNode arg in args) {
+                if(pValues == null)
+                    break;
                 // get from Add tag Name parameter
                 string pName = arg.Attributes["Name"].Value;
                 // get value object from dictionary

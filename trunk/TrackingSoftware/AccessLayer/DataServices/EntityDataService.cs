@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Xml;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 
 namespace DataAccessLayer {
@@ -38,9 +40,15 @@ namespace DataAccessLayer {
             unit = unit_;
 
             XmlDocument doc = new XmlDocument();
-            doc.Load(unitMappingPath + unitMapperFile);
+            doc.Load(
+                String.Format("{0}\\{1}{2}",
+                Directory.GetCurrentDirectory(),
+                unitMappingPath, unitMapperFile)
+                );
 
-            XmlNode node = doc.SelectSingleNode("/Root/Add[@Unit='" + unit + "']");
+            XmlNode node = doc.SelectSingleNode(
+                String.Format("/Root/Add[@Unit='{0}']", unit)
+                );
 
             unitFile = node.Attributes["File"].Value;
         }

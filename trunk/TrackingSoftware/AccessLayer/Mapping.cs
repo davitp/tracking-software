@@ -32,7 +32,6 @@ namespace DataAccessLayer {
 
                 // create dictionary 
                 MappedAttributes = new Dictionary<string, string>();
-
                 // load mapper xml file
                 XmlDocument doc = new XmlDocument();
                 doc.Load(entityMapperFile);
