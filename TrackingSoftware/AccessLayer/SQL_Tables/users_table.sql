@@ -1,7 +1,7 @@
 USE [TrackingSoftwareDB]
 GO
 
-/****** Object:  Table [dbo].[users_table]    Script Date: 05/26/2014 21:12:34 ******/
+/****** Object:  Table [dbo].[users_table]    Script Date: 06/08/2014 18:29:27 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -12,13 +12,13 @@ SET ANSI_PADDING ON
 GO
 
 CREATE TABLE [dbo].[users_table](
-	[userId] [int] IDENTITY(1,1) NOT NULL,
-	[roleId] [int] NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
 	[username] [varchar](20) NOT NULL,
-	[passwd] [varchar](30) NOT NULL,
+	[passwd] [varchar](25) NOT NULL,
+	[fullname] [varchar](50) NOT NULL,
 UNIQUE NONCLUSTERED 
 (
-	[userId] ASC
+	[id] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -27,10 +27,12 @@ GO
 SET ANSI_PADDING OFF
 GO
 
-ALTER TABLE [dbo].[users_table]  WITH CHECK ADD  CONSTRAINT [roleId_references_userRoles_table] FOREIGN KEY([roleId])
-REFERENCES [dbo].[userRoles_table] ([roleId])
+ALTER TABLE [dbo].[users_table] ADD  DEFAULT ('NoUserame') FOR [username]
 GO
 
-ALTER TABLE [dbo].[users_table] CHECK CONSTRAINT [roleId_references_userRoles_table]
+ALTER TABLE [dbo].[users_table] ADD  DEFAULT ('NoPassword') FOR [passwd]
+GO
+
+ALTER TABLE [dbo].[users_table] ADD  DEFAULT ('NoFullName') FOR [fullname]
 GO
 

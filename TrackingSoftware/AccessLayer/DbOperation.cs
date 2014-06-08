@@ -37,13 +37,16 @@ namespace DataAccessLayer {
             // readin tag <ReturnType> data </ReturnType> from XML node
             returnType = opNode.SelectSingleNode("ns:ReturnType", ns).InnerText;
 
-
+            
             // initlialize commandType
             // reading CommandType tag value from XML
             // and trying to parse it as CommandType enum
-            Enum.TryParse<CommandType>(
+            commandType = (CommandType) CommandType.Parse(
+                typeof(CommandType),
                 opNode.SelectSingleNode("ns:CommandType", ns).InnerText,
-                out commandType);
+                true
+                );
+            
 
             /* starting parameters initialization */
 
@@ -69,8 +72,10 @@ namespace DataAccessLayer {
 
                 // parse DbType attribute as SqlDbType enumeration
                 SqlDbType type = new SqlDbType();
-                Enum.TryParse<SqlDbType>(arg.Attributes["DbType"].Value,       
-                    out type);
+                type = (SqlDbType) SqlDbType.Parse(
+                    typeof(SqlDbType), 
+                    arg.Attributes["DbType"].Value,
+                    true);
 
                 // parse ParamSize attribute
                 // this attribute is optional
@@ -114,9 +119,10 @@ namespace DataAccessLayer {
                     // if there is query-parameters to set 
                     foreach(var p in parameters) {
                         // create new parameter
-                        var newParam = command.CreateParameter();
+                        var newParam = ConnectionContext.CreateParameter();
                         // set parameter type (int, varchar, ...)
-                        newParam.DbType = (DbType) p.Item3;
+                        newParam.SqlDbType = p.Item3;
+                        
                         // set parameter name
                         // for example we are passing id parameter
                         // we need to write here @id

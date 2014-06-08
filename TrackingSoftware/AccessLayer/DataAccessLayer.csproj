@@ -47,6 +47,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SQL_Tables\carDevices_table.sql" />
+    <Content Include="SQL_Tables\carsState_table.sql" />
+    <Content Include="SQL_Tables\cars_table.sql" />
+    <Content Include="SQL_Tables\car_carDevice_relation_table.sql" />
+    <Content Include="SQL_Tables\car_driver_relation_table.sql" />
+    <Content Include="SQL_Tables\drivers_table.sql" />
+    <Content Include="SQL_Tables\parks_table.sql" />
+    <Content Include="SQL_Tables\userRoles_table.sql" />
+    <Content Include="SQL_Tables\users_table.sql" />
+    <Content Include="SQL_Tables\user_role_relation_table.sql" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -62,14 +72,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQL_Tables\carDevice_table.sql" />
-    <Content Include="SQL_Tables\carstate_table.sql" />
-    <Content Include="SQL_Tables\cars_table.sql" />
-    <Content Include="SQL_Tables\drivers_table.sql" />
-    <Content Include="SQL_Tables\parks_table.sql" />
-    <Content Include="SQL_Tables\car_driver_table.sql" />
-    <Content Include="SQL_Tables\userRoles_table.sql" />
-    <Content Include="SQL_Tables\users_table.sql" />
     <None Include="MappingResources\EntitiesSchema.xsd">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

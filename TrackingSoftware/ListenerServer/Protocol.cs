@@ -17,17 +17,16 @@ namespace ListenerServer {
             /* starting protocol description */
             #region
             // carId - integer
-            int carId = Convert.ToInt32(parameters[0].Trim());
+            int carId = Convert.ToInt32(parameters[0]);
             // fuelLevel
-            double fuelLevel = Convert.ToDouble(parameters[1].Trim());
+            double fuelLevel = Convert.ToDouble(parameters[1]);
             // latitude and longitude
-            double latitude = Convert.ToDouble(parameters[2].Trim());
-            double longitude = Convert.ToDouble(parameters[3].Trim());
+            double latitude = Convert.ToDouble(parameters[2]);
+            double longitude = Convert.ToDouble(parameters[3]);
             // speed
-            int speed = Convert.ToInt32(parameters[4].Trim());
+            int speed = Convert.ToInt32(parameters[4]);
             // need to change oil
-            bool changeOil = Convert.ToBoolean(parameters[5].Trim());
-            // state time
+            bool changeOil = Convert.ToBoolean(parameters[5]);
             DateTime stateTime = DateTime.FromBinary(
                 Convert.ToInt64(parameters[6])
                 );

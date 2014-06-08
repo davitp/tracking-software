@@ -1,7 +1,7 @@
 USE [TrackingSoftwareDB]
 GO
 
-/****** Object:  Table [dbo].[carDevices_table]    Script Date: 05/26/2014 21:09:54 ******/
+/****** Object:  Table [dbo].[carDevices_table]    Script Date: 06/08/2014 18:27:27 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -24,5 +24,11 @@ UNIQUE NONCLUSTERED
 GO
 
 SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[carDevices_table] ADD  CONSTRAINT [DF_carDevices_table_simNumber]  DEFAULT ('NoSimNumber') FOR [simNumber]
+GO
+
+ALTER TABLE [dbo].[carDevices_table] ADD  CONSTRAINT [DF_carDevices_table_deviceModel]  DEFAULT ('NoModel') FOR [deviceModel]
 GO
 

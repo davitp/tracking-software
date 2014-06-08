@@ -18,6 +18,10 @@ namespace DataAccessLayer {
             return new SqlCommand();
         }
 
+        public static SqlParameter CreateParameter() {
+            return new SqlParameter();
+        }
+
         static ConnectionContext() {
             ConnectionString = "Data Source=DAVIT-WIN7; Initial Catalog=TrackingSoftwareDB;Integrated Security=SSPI";
         }

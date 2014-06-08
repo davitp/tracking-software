@@ -1,7 +1,7 @@
 USE [TrackingSoftwareDB]
 GO
 
-/****** Object:  Table [dbo].[cars_table]    Script Date: 06/01/2014 15:58:46 ******/
+/****** Object:  Table [dbo].[cars_table]    Script Date: 06/08/2014 18:27:41 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,7 +13,6 @@ GO
 
 CREATE TABLE [dbo].[cars_table](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[carDeviceId] [int] NOT NULL,
 	[color] [varchar](10) NOT NULL,
 	[manufacturer] [varchar](40) NOT NULL,
 	[model] [varchar](20) NOT NULL,
@@ -28,4 +27,12 @@ GO
 SET ANSI_PADDING OFF
 GO
 
+ALTER TABLE [dbo].[cars_table] ADD  DEFAULT ('NoColor') FOR [color]
+GO
+
+ALTER TABLE [dbo].[cars_table] ADD  DEFAULT ('NoManufacturer') FOR [manufacturer]
+GO
+
+ALTER TABLE [dbo].[cars_table] ADD  DEFAULT ('NoModel') FOR [model]
+GO
 
