@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using System.Net.Sockets;
 using System.Collections.Generic;
+using DataAccessLayer;
 
 // implementing listener server
 // that will wait for tcp connections
@@ -57,6 +58,7 @@ namespace ListenerServer {
 
             // prepare buffer
             byte[] buffer = new byte[1024];
+            
 
             // serving until disconnecting
             while(arg.ClientSocket.Connected) {
@@ -72,8 +74,7 @@ namespace ListenerServer {
                 //if(BitConverter.IsLittleEndian)
                 //    Array.Reverse(buffer);
 
-
-                string sBuffer = Encoding.UTF8.GetString(buffer);
+                string sBuffer = Encoding.UTF8.GetString(buffer, 0, recivedBytes);
                 
 
                 // convert byte array into dictionary
@@ -86,7 +87,8 @@ namespace ListenerServer {
                 Console.WriteLine();
 
                 /* insert into DB */
-                // not implemented yet
+                var dataService = new EntityDataService(unit);
+                int rows = dataService.ExecuteNonQuery("InsertState", convertedData);
                 
             }
 

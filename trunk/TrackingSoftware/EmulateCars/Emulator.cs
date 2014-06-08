@@ -51,7 +51,7 @@ namespace EmulateCars {
 
             var dataService = new EntityDataService(unit);
             // retrive ID's from db
-           /* var carIds = dataService.ExecuteSet("GetIDs", null);
+            var carIds = dataService.ExecuteSet("GetIDs", null);
 
             // initialize car ID's
             int carsCnt = carIds.Count;
@@ -59,11 +59,13 @@ namespace EmulateCars {
             for(int i = 0; i < carsCnt; i++)
                 cars[i] = (int) carIds[i]["id"];
 
-            */
-            cars = new int[] {2, 3, 4, 5, 6};
+            
             // initialize start coordinates
-            latitude = 103.9;
-            longitude = 30.08;
+            Random random = new Random(12435);
+            latitude = random.NextDouble() / 588307;
+            longitude = random.NextDouble() / 998017;
+
+            
 
             speed = 0;
             changeOil = false;
@@ -116,10 +118,11 @@ namespace EmulateCars {
 
             // buffer string is ready
             bufferString = String.Format("{0};{1};{2};{3};{4};{5};{6}",
-                carId.ToString(), fuelLevel.ToString(),
-                latitude.ToString(), longitude.ToString(),
-                speed.ToString(), changeOil.ToString(),
-                DateTime.Now.ToBinary().ToString());
+                carId, fuelLevel,
+                latitude, longitude,
+                speed, changeOil,
+                DateTime.Now.ToBinary()
+                );
 
 
 
@@ -130,6 +133,22 @@ namespace EmulateCars {
             // send buffer
             client.Client.SendBufferSize = buffer.Length;
             client.Client.Send(buffer);
+        
+            // change car data
+            if(speed < 60)
+                speed += 8;
+            else if(speed > 70)
+                speed -= 15;
+            else
+                speed += 4;
+
+            Random random = new Random(56788765);
+            latitude += random.NextDouble();
+            longitude += random.NextDouble();
+
+            double fuelDecrement = random.NextDouble() / 1000;
+            fuelLevel -= fuelDecrement;
+
         }
 
 

@@ -1,7 +1,7 @@
 USE [TrackingSoftwareDB]
 GO
 
-/****** Object:  Table [dbo].[drivers_table]    Script Date: 05/26/2014 21:12:03 ******/
+/****** Object:  Table [dbo].[drivers_table]    Script Date: 06/08/2014 18:28:38 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,8 +13,8 @@ GO
 
 CREATE TABLE [dbo].[drivers_table](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[name] [varchar](50) NOT NULL,
-	[tel] [varchar](20) NOT NULL,
+	[name] [varchar](10) NOT NULL,
+	[tel] [varchar](40) NOT NULL,
 	[salary] [decimal](18, 0) NOT NULL,
 UNIQUE NONCLUSTERED 
 (
@@ -25,5 +25,14 @@ UNIQUE NONCLUSTERED
 GO
 
 SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[drivers_table] ADD  DEFAULT ('NoName') FOR [name]
+GO
+
+ALTER TABLE [dbo].[drivers_table] ADD  DEFAULT ('NoTel') FOR [tel]
+GO
+
+ALTER TABLE [dbo].[drivers_table] ADD  DEFAULT ((0)) FOR [salary]
 GO
 

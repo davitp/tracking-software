@@ -31,7 +31,7 @@ elementFormDefault="qualified">
               <xs:element name="Parameters" minOccurs="0">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="Add" minOccurs="1">
+                    <xs:element name="Add" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
 
                          <xs:attribute name="DbType" use="required" >
