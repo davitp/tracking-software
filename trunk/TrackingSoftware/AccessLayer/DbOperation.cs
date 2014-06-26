@@ -100,7 +100,7 @@ namespace DataAccessLayer {
             // our operation returns object 
             // user need to cast result for his own
             // purposes.. Can be casted to 
-            // int: for NonQuer
+            // int: for NonQuery
             // object: for scalar
             // DataTable: from Set
             object result;

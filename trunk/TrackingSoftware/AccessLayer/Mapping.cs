@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Xml;
 using System.Configuration;
+using System.Reflection;
+using System.IO;
 
 
 namespace DataAccessLayer {
@@ -23,7 +25,12 @@ namespace DataAccessLayer {
 
             // static initializer
             static Mapper() {
-                entityMapperFile = @"MappingResources\Entities.xml";
+                string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+                entityMapperFile = String.Format(
+                    "{0}\\MappingResources\\Entities.xml",
+                    // current assembly directory
+                    assemblyFolder
+                    );
             }
 
             public Mapper(string _entityName) {

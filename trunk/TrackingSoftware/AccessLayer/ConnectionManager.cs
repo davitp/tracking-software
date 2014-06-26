@@ -23,7 +23,7 @@ namespace DataAccessLayer {
         }
 
         static ConnectionContext() {
-            ConnectionString = "Data Source=DAVIT-WIN7; Initial Catalog=TrackingSoftwareDB;Integrated Security=SSPI";
+            ConnectionString = "Data Source=ADMIN-PC\\SQLEXPRESS; Initial Catalog=TrackingSoftwareDB;Integrated Security=SSPI";
         }
            
     }

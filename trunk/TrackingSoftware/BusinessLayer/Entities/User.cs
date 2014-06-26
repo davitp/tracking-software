@@ -22,9 +22,7 @@ namespace BusinessLayer {
         [DictionaryMember]
         public string FullName { get; protected set; }
 
-        // Role of user 
-        [DictionaryMember]
-        public int RoleId { get; protected set; }
+
 
         #endregion
 
