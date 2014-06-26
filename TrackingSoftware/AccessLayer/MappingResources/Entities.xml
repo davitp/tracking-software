@@ -9,6 +9,13 @@ xsi:schemaLocation="http://www.w3schools.com EntitiesSchema.xsd">
     <Property BusinessName="Color" PlainName="color" />
     <Property BusinessName="Manufacturer" PlainName="manufacturer" />
     <Property BusinessName="Model" PlainName="model" />
-  </Entity> 
+  </Entity>
+
+  <Entity BusinessName="User" PlainName="user">
+    <Property BusinessName="UserId" PlainName="id" />
+    <Property BusinessName="Username"  PlainName="username" />
+    <Property BusinessName="Password" PlainName="passwd" />
+    <Property BusinessName="FullName" PlainName="fullname" />
+  </Entity>
 
 </Entities>

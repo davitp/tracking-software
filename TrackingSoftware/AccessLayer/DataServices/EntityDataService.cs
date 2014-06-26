@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Xml;
 using System.Data.SqlClient;
+using System.Reflection;
 using System.Data;
 using System.Configuration;
 
@@ -38,12 +39,17 @@ namespace DataAccessLayer {
         // initializing unit
         public EntityDataService(string unit_) {
             unit = unit_;
+            // current assembly folder
+            string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
 
             XmlDocument doc = new XmlDocument();
             doc.Load(
-                String.Format("{0}\\{1}{2}",
-                Directory.GetCurrentDirectory(),
-                unitMappingPath, unitMapperFile)
+                String.Format(
+                "{0}\\{1}{2}",
+                assemblyFolder,
+                unitMappingPath,
+                unitMapperFile
+                )
                 );
 
             XmlNode node = doc.SelectSingleNode(
@@ -76,8 +82,14 @@ namespace DataAccessLayer {
             for(int i = 0; i < reader.Rows.Count; i++ ) {
                 // convert single row to DAL entity (plain entity)
                 IDictionary<string, object> singleResult = new Dictionary<string, object>();
-                for(int j = 0; j < reader.Columns.Count; j++)
-                    singleResult.Add(reader.Columns[j].ColumnName, reader.Rows[i][j]);
+                for(int j = 0; j < reader.Columns.Count; j++) {
+                    object valueToAdd = reader.Rows[i][j];
+                    // if object retrived from DB is null
+                    // convret from DBNull to .NET null
+                    if(DBNull.Value.Equals(valueToAdd))
+                        valueToAdd = null;
+                    singleResult.Add(reader.Columns[j].ColumnName, valueToAdd);
+                }
                 // add entity to list
                 result.Add(singleResult);
             }
@@ -131,7 +143,15 @@ namespace DataAccessLayer {
         private XmlNode GetNodeOfOperation(string operation) {
             // init doc
             XmlDocument doc = new XmlDocument();
-            doc.Load(unitMappingPath + unitFile);
+
+            // assembly folder
+            string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            doc.Load(String.Format(
+                "{0}\\{1}{2}", 
+                assemblyFolder, 
+                unitMappingPath,
+                unitFile)
+                );
 
             // init namespace
             nsMgr = new XmlNamespaceManager(doc.NameTable);
