@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Unit UnitName="car" xmlns="http://www.w3schools.com"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3schools.com OperationsMapperSchema.xsd">
+
+  <!-- GetAll operation have no parameters -->
+  <Operation Name="GetAll">
+    <CommandType>Text</CommandType>
+    <CommandText>
+      select id, username, passwd, fullname
+      from users_table
+    </CommandText>
+    <ReturnType>Set</ReturnType>
+  </Operation>
+
+  
+</Unit>

@@ -27,9 +27,8 @@ namespace ListenerServer {
             int speed = Convert.ToInt32(parameters[4]);
             // need to change oil
             bool changeOil = Convert.ToBoolean(parameters[5]);
-            DateTime stateTime = DateTime.FromBinary(
-                Convert.ToInt64(parameters[6])
-                );
+            DateTime stateTime = DateTime.Parse(parameters[6]);
+
             #endregion
             
 
