@@ -7,7 +7,7 @@ namespace BusinessLayer {
 
         #region Car-specific methods
         // get state of car with carId and atTime parameters
-        State GetState(int carId, DateTime atTime) {
+        CarState GetState(int carId, DateTime atTime) {
             // boxing parameters
             // parameter 0: carId
             // parameter 1: atTime
@@ -20,12 +20,12 @@ namespace BusinessLayer {
             IDictionary<string, object> retrive 
                 = dataService.ExecuteSingle("GetState", args);
 
-            return new State(retrive);
+            return new CarState(retrive);
         }
 
         // get state history of car in range [start, end]
-        IList<State> GetStateHistory(int carId, DateTime startTime, DateTime endTime) {
-            IList<State> history = new List<State>();
+        IList<CarState> GetStateHistory(int carId, DateTime startTime, DateTime endTime) {
+            IList<CarState> history = new List<CarState>();
 
             // boxing parameters
             // parameter 0: carId
@@ -42,7 +42,7 @@ namespace BusinessLayer {
 
             // fill history list based on DAL answer
             foreach(var dalObj in retrive)
-                history.Add(new State(dalObj));
+                history.Add(new CarState(dalObj));
 
             return history;
         }

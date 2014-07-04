@@ -9,8 +9,6 @@ namespace WebApplication.Controllers {
 
         [Authorize]
         public ActionResult Index() {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-            ViewBag.Ankap = "Ha yani inch";
 
             return View();
         }

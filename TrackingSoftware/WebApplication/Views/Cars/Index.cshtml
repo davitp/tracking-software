@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Մեքենաներ";
+}
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>  
+<style>
+    #map-canvas {
+        height: 100%
+    }
+</style>
+
+<script>
+    $(function () {
+        initialize();
+    });
+
+    function initializeMap(cars) {
+
+        console.log(cars);
+        
+        // options of map
+        var mapOptions = {
+            zoom: 4,
+            center: new google.maps.LatLng(0, 0)
+        };
+
+        var map = google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        // iterate on cars
+        // retrived as JSON
+        for (car in cars) {
+            debugger;
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/api/CarStates/" + car.Id,
+                
+                success: function (data) {
+                    // current car's latlong
+                    var carLatLong = new google.maps.LatLng(data.Latitude, data.Longitude);
+                    // create marker on map
+                    // having position carLatLong
+                    var marker = new google.maps.Marker({
+                        position: carLatLong,
+                        map: map, // global map
+                        title: car.Manufacturer + " " + car.Model 
+                    });
+
+                    // fill out simple text to show on tooltip
+                    var infoContent = "";
+                    infoContent += "<b>Id</b>: " + car.Id + "</br>";
+                    infoContent += "<b>Model</b>: " + car.Model + "</br>";
+                    infoContent += "<b>Manufacturer</b>: " + car.Manufacturer + "</br>";
+                    infoContent += "<b>Manufacturer</b>: " + car.Manufacturer + "</br>";
+                    infoContent += "<b>Color</b>: " + car.Color + "</br>";
+
+                    // create new infobox
+                    var infoBox = new google.maps.InfoWindow({
+                        content: infoContent
+                    });
+
+                    // bind infobox to marker's click
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.open(map, marker);
+                    });
+                },
+
+                error: function (e) {
+                    console.log(e.statusText);
+                }
+            });
+        }
+
+    }
+
+    function initialize() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "/api/Cars",
+            success: function (data) {
+                initializeMap(data);
+            },
+            error: function(e){
+                console.log(e.statusText);
+            }
+        });
+    }
+
+   
+</script>
+
+<body>
+    <h2>Մեքենաները քարտեզի վրա</h2>
+    <div id="map-canvas"></div>
+</body>

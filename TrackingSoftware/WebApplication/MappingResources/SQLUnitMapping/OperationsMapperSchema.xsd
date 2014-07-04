@@ -1,0 +1,92 @@
+﻿<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.w3schools.com"
+xmlns="http://www.w3schools.com"
+elementFormDefault="qualified">
+  <xs:element name="Unit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Operation" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CommandType" minOccurs="1" maxOccurs="1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="StoredProcedure"/>
+                    <xs:enumeration value="Text"/>
+                    <xs:enumeration value="TableDirect"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element type="xs:string" name="CommandText" minOccurs="1" maxOccurs="1" />
+              <xs:element  name="ReturnType"  minOccurs="1" maxOccurs="1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="Set"/>
+                    <xs:enumeration value="Scalar"/>
+                    <xs:enumeration value="NonQuery"/>
+                    <xs:enumeration value="Update" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Parameters" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Add" minOccurs="1" maxOccurs="unbounded">
+                      <xs:complexType>
+
+                         <xs:attribute name="DbType" use="required" >
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                              <xs:enumeration value="BigInt" />
+                              <xs:enumeration value="Binary" />
+                              <xs:enumeration value="Bit" />
+                              <xs:enumeration value="Char" />
+                              <xs:enumeration value="Date" />
+                              <xs:enumeration value="DateTime" />
+                              <xs:enumeration value="DateTimeWithTimeZone" />
+                              <xs:enumeration value="Decimal" />
+                              <xs:enumeration value="Float" />
+                              <xs:enumeration value="Image" />
+                              <xs:enumeration value="Int" />
+                              <xs:enumeration value="LargeDateTime" />
+                              <xs:enumeration value="Money" />
+                              <xs:enumeration value="NChar" />
+                              <xs:enumeration value="NText" />
+                              <xs:enumeration value="NVarChar" />
+                              <xs:enumeration value="Real" />
+                              <xs:enumeration value="SmallDateTime" />
+                              <xs:enumeration value="SmallInt" />
+                              <xs:enumeration value="SmallMoney" />
+                              <xs:enumeration value="Text" />
+                              <xs:enumeration value="Time" />
+                              <xs:enumeration value="Timestamp" />
+                              <xs:enumeration value="TinyInt" />
+                              <xs:enumeration value="Udt" />
+                              <xs:enumeration value="UniqueIdentifier" />
+                              <xs:enumeration value="VarBinary" />
+                              <xs:enumeration value="VarChar" />
+                              <xs:enumeration value="Variant" />
+                              <xs:enumeration value="Xml" />
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                   
+                        <xs:attribute name="ParamSize" />
+                        <xs:attribute name="Name" use="required"/>
+
+
+                      </xs:complexType>
+                      
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="Name" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="UnitName" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

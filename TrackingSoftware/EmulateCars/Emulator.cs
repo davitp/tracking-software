@@ -121,7 +121,7 @@ namespace EmulateCars {
                 carId, fuelLevel,
                 latitude, longitude,
                 speed, changeOil,
-                DateTime.Now.ToBinary()
+                DateTime.Now.ToString()
                 );
 
 
