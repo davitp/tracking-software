@@ -49,6 +49,7 @@
     <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Repositories\CarDeviceRepository.cs" />
     <Compile Include="Repositories\CarRepository.cs" />
+    <Compile Include="Repositories\CarStateRepository.cs" />
     <Compile Include="Repositories\DriverRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Entities\Driver.cs" />

@@ -4,4 +4,5 @@
   <Add Unit="driver" File="driver_operations.xml" />
   <Add Unit="carDevice" File="carDevice_operations.xml" />
   <Add Unit="user" File="user_operations.xml" />
+  <Add Unit="carState" File="carState_operations.xml" />
 </Root>

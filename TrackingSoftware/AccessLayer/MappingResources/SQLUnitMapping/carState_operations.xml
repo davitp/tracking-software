@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Unit UnitName="car" xmlns="http://www.w3schools.com"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3schools.com OperationsMapperSchema.xsd">
+  
+  <!-- Get last known state operation -->
+  <Operation Name="GetLastState">
+    <CommandType>Text</CommandType>
+    <CommandText>
+      select top 1
+      fuelLevel, speed, changeOil,
+      latitude, longitude, stateTime
+      from carsState_table
+      where
+      carId = @id
+      order by stateTime desc
+      )
+
+    </CommandText>
+    <ReturnType>Set</ReturnType>
+    <Parameters>
+      <Add DbType="Int" Name="id" />
+    </Parameters>
+  </Operation>
+
+  <!-- Get state history of car in interval -->
+  <Operation Name="GetStateHistory">
+    <CommandType>Text</CommandType>
+    <CommandText>
+      select 
+      fuelLevel, speed, changeOil,
+      latitude, longitude, stateTime
+      from carsState_table
+      where
+      carId = @id
+      and stateTime between @start and @end
+      order by stateTime
+      
+
+    </CommandText>
+    <ReturnType>Set</ReturnType>
+    <Parameters>
+      <Add DbType="Int" Name="id" />
+      <Add DbType="DateTime" Name="start"/>
+      <Add DbType="DateTime" Name="end"/>
+    </Parameters>
+  </Operation>
+
+  
+</Unit>

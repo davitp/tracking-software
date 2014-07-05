@@ -1,0 +1,85 @@
+﻿@model WebApplication.Models.CarStateHistoryModel
+
+@{
+    ViewBag.Title = "Ճանապարհ";
+}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>  
+
+<h2>Ճանապարհի ցուցադրում</h2>
+
+<form id="form_draw_history" method="post">
+    <fieldset>
+        <legend>Ընտրել</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Id)
+                @Html.TextBoxFor(m => m.Id)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Start)
+                @Html.EditorFor(m => m.Start)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.End)
+                @Html.EditorFor(m => m.End)
+            </li>
+        </ol>
+        <input type="submit" value="Գծել" id="draw_map" />
+    </fieldset>
+
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+            $("#map_canvas").html("");
+            $("#map_canvas").fadeOut();
+            $("#form_draw_history").submit(function (event) {
+                $.ajax(
+                      {
+                      url: '/api/CarStates/',
+                      dataType: 'json',
+                      data: $(this).serialize(),
+                      type: 'POST',
+                      success: function (data) {
+
+                          var coordinates = [];
+                          for (i = 0; i < data.length; i++)
+                              coordinates.push(new google.maps.LatLng(data[i].Latitude, data[i].Longitude));
+                          console.log(coordinates);
+                          // line 
+                          var flightPath = new google.maps.Polyline({
+                              path: coordinates,
+                              geodesic: true,
+                              strokeColor: '#FF0000',
+                              strokeOpacity: 1.0,
+                              strokeWeight: 10
+
+                          });
+
+                        
+
+                          var mapOptions = {
+                              zoom: 3,
+                              center: coordinates[ coordinates.length/2 ],
+                              mapTypeId: google.maps.MapTypeId.TERRAIN
+                          };
+
+                          var map = new google.maps.Map(document.getElementById('map_canvas'),
+                              mapOptions);
+
+                          $("#map_canvas").fadeIn();
+
+                      },
+                      error: function (xhr) {
+                          console.log(xhr);
+                      }
+                  });
+            event.preventDefault();
+        });
+    });
+</script> 
+</form><br />
+
+<h2>Քարտեզ</h2>
+<br />
+<br />
+<div id="map_canvas" style="width: 100%; height: 500px; display: none;"></div>
