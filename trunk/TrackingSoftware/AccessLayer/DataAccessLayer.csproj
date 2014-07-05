@@ -50,6 +50,10 @@
     <Content Include="MappingResources\SQLUnitMapping\user_operations.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="MappingResources\SQLUnitMapping\carState_operations.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SQL_Tables\carDevices_table.sql" />
     <Content Include="SQL_Tables\carsState_table.sql" />
     <Content Include="SQL_Tables\cars_table.sql" />

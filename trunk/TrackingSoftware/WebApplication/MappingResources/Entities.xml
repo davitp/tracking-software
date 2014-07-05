@@ -18,4 +18,13 @@ xsi:schemaLocation="http://www.w3schools.com EntitiesSchema.xsd">
     <Property BusinessName="FullName" PlainName="fullname" />
   </Entity>
 
+  <Entity BusinessName="CarState" PlainName="carState">
+    <Property BusinessName="FuelLevel" PlainName="fuelLevel"  />
+    <Property BusinessName="NeedToChangeOil" PlainName="changeOil" />
+    <Property BusinessName="When" PlainName="stateTime" />
+    <Property BusinessName="Speed" PlainName="speed" />
+    <Property BusinessName="Latitude" PlainName="latitude" />
+    <Property BusinessName="Longitude" PlainName="longitude" />
+  </Entity>
+  
 </Entities>
