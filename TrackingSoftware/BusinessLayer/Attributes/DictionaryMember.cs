@@ -7,7 +7,7 @@ namespace BusinessLayer {
     // this attribute says 
     // that a member noted by [DictionaryMember]
     // need to be included to DAL Dictionary
-    class DictionaryMemberAttribute : Attribute {
+    internal class DictionaryMemberAttribute : Attribute {
         
     }
 }
