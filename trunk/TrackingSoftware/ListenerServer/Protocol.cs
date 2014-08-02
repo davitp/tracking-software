@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace ListenerServer {
     public static class Protocol {
@@ -17,17 +18,17 @@ namespace ListenerServer {
             /* starting protocol description */
             #region
             // carId - integer
-            int carId = Convert.ToInt32(parameters[0]);
+            int carId = int.Parse(parameters[0]);
             // fuelLevel
-            double fuelLevel = Convert.ToDouble(parameters[1]);
+            double fuelLevel = double.Parse(parameters[1]);
             // latitude and longitude
-            double latitude = Convert.ToDouble(parameters[2]);
-            double longitude = Convert.ToDouble(parameters[3]);
+            double latitude = double.Parse(parameters[2]);
+            double longitude = double.Parse(parameters[3]);
             // speed
-            int speed = Convert.ToInt32(parameters[4]);
+            int speed = int.Parse(parameters[4]);
             // need to change oil
-            bool changeOil = Convert.ToBoolean(parameters[5]);
-            DateTime stateTime = DateTime.Parse(parameters[6]);
+            bool changeOil = bool.Parse(parameters[5]);
+            DateTime stateTime = DateTime.ParseExact(parameters[6], "dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
             #endregion
             

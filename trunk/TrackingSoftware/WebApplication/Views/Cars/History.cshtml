@@ -28,7 +28,7 @@
     </fieldset>
 
     <script type="text/javascript">
-        
+        var debug;
         $(document).ready(function () {
             $("#map_canvas").html("");
             $("#map_canvas").fadeOut();
@@ -40,32 +40,37 @@
                       data: $(this).serialize(),
                       type: 'POST',
                       success: function (data) {
-
+                          console.log(data);
                           var coordinates = [];
-                          for (i = 0; i < data.length; i++)
+                          for (i = 0; i < data.length; i++) {
                               coordinates.push(new google.maps.LatLng(data[i].Latitude, data[i].Longitude));
-                          console.log(coordinates);
+                             
+                          }
+                          debug = coordinates;
+                          console.log(debug);
                           // line 
                           var flightPath = new google.maps.Polyline({
                               path: coordinates,
                               geodesic: true,
                               strokeColor: '#FF0000',
                               strokeOpacity: 1.0,
-                              strokeWeight: 10
+                              strokeWeight: 0.5
 
                           });
 
-                        
 
                           var mapOptions = {
-                              zoom: 3,
+                              zoom: 10,
                               center: coordinates[ coordinates.length/2 ],
-                              mapTypeId: google.maps.MapTypeId.TERRAIN
+                              mapTypeId: google.maps.MapTypeId.ROADMAP
                           };
 
                           var map = new google.maps.Map(document.getElementById('map_canvas'),
                               mapOptions);
 
+                          flightPath.setMap(map);
+
+                          console.log("fading in");
                           $("#map_canvas").fadeIn();
 
                       },

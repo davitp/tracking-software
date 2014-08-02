@@ -82,8 +82,9 @@ namespace ListenerServer {
 
                 /* debug recived result */
                 Console.WriteLine("-> From client: {0}", arg.ClientSerial);
-                foreach(var r in convertedData)
-                    Console.Write("{0}: {1}, ", r.Key, r.Value);
+                //foreach(var r in convertedData)
+                //    Console.Write("{0}: {1}, ", r.Key, r.Value);
+                Console.WriteLine(sBuffer);
                 Console.WriteLine();
 
                 /* insert into DB */
